@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  {% block header_js %}{% endblock %}
+</head>
+
+<body>
+  {% include 'partials/_header.html' %}
+  <div id="content">
+    {% block body %}{% endblock %}
+  </div>
+  
+  {% include 'partials/_footer.html' %}
+  {% block footer_js %}{% endblock %}
+  
+
+</body>
+</html>
