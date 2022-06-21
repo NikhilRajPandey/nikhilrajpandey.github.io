@@ -54,16 +54,6 @@ body {
   margin: 0;
 }
 
-#content, navbar{
-  width: 85%;
-  margin: 0 auto;
-}
-
-.figure img{
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-}
 
 /* Make the header bg full width, but the content inline with body */
 body > header {
