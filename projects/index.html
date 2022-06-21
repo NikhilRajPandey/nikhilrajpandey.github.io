@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-21 Tue 19:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Small Projects Showcase</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nikhil Raj Pandey" />
+<meta name="description" content="My Small Projects Showcase"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="https://nikhilrajpandey.github.io/css/style.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">My Small Projects Showcase</h1>
+<navbar>
+    <a href="/">HOME</a>
+    <a href="#">CONTACT</a>
+    <a href="#">ABOUT</a>
+    <a href="https://github.com/nikhilrajpandey">GITHUB</a>
+</navbar>
+<style>
+    navbar{
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .title{
+      display: none;
+    }
+</style>
+
+<div id="outline-container-org91e088c" class="outline-2">
+<h2 id="org91e088c"><span class="section-number-2">1</span> Built From P5.js</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="https://github.com/nikhilrajpandey/blaster-again">Blaster</a>
+This game is a remake of my this <a href="https://github.com/NikhilRajPandey/Blaster-Python-Game">game</a> in p5js. That I made in 2019.
+Play this Game <a href="https://nikhilrajpandey.github.io/blaster-again/">Here</a>.</li>
+
+<li><a href="https://github.com/NikhilRajPandey/graphWorld">Graph World</a>
+This is a simple project made using p5js and javascript for learning to implement drag and drop, graphs Data structure.
+You can access this website <a href="https://nikhilrajpandey.github.io/graphWorld/">Here.</a></li>
+
+<li><a href="https://github.com/NikhilRajPandey/roaming-rocket">Roaming Rocket</a>
+This is a simple simulation of rocket that is roaming in space. You can see and control		simulation of this rocket from <a href="https://nikhilrajpandey.github.io/roaming-rocket/">Here</a>.</li>
+
+<li><a href="https://github.com/NikhilRajPandey/ClockP5.js/">Clock P5js</a>
+It is a simple Clock I made it for my practice for Trignometry Triangles+Coding Practices</li>
+
+<li><a href="https://github.com/NikhilRajPandey/tic-tac-toe">Tic Tac Toe</a>
+This is a simple game tic-tac-toe(O-X) made using javascript,minimax algorithm and p5.js</li>
+
+<li><a href="https://github.com/NikhilRajPandey/ScreenSaver-animation">Screen Saver Animation</a>
+This is a screen saver animation. Mimick of Ubuntu mate screen saver that is made by me using p5Js and html (🤣)</li>
+
+<li><a href="https://editor.p5js.org/NikhilRajPandey/sketches">Snow Man</a>
+This is a simple drawing of snowman using cirlces and ellipse.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf237f34" class="outline-3">
+<h3 id="orgf237f34"><span class="section-number-3">1.1</span> Projects I made from Half Reading of NatureOfCode</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+I readed the <a href="https://natureofcode.com">Nature Of Code</a> Book Half when I was in 10th class due to my lack of knowledge of physics I was'nt able to read it fully.
+But When day I will read it.(🤣)
+</p>
+
+<ul class="org-ul">
+<li><a href="https://editor.p5js.org/NikhilRajPandey/sketches/krgzBbyX2">Rotating Shape</a>
+This is a p5js sketch for making a animation of rotation of shape. Which Was written when I didn'nt know much Trignometry and p5js Trignometry Functions.</li>
+
+<li><a href="https://editor.p5js.org/NikhilRajPandey/sketches/aZQSh8Q0b">Gravity + Wind Animation</a>
+This project is simulation of gravity with wind on a ball.</li>
+
+<li><a href="https://editor.p5js.org/NikhilRajPandey/sketches/aZQSh8Q0b">Helium Baloons</a>
+This is a a simulation of Helium Baloons Going up.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf0948b" class="outline-2">
+<h2 id="orgdf0948b"><span class="section-number-2">2</span> Maths + Programming</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://github.com/NikhilRajPandey/EvalFunction/">Eval Function</a>
+This is a simple c++ program to evaluate expression which I built when I was learning C++ and DSalgo. Simple Trying to implement python eval function.</li>
+
+<li><a href="https://github.com/nikhilrajpandey/Polynomial_divide">Polynomial Divide</a>
+This is a program to calculate divison for two polynomials in C++ that we have read in class(IX/X) Like If this is divisor "-x<sup>2</sup>+x-1" and this is dividend then "-x<sup>3</sup>+3x<sup>2</sup>-3x+5" Then it will return Quoitent +1x-2 and Reminder +3</li>
+
+<li><a href="https://github.com/nikhilrajpandey/sinFinder">Sin Finder</a>
+This is a simple program for calculating sin of any angle.In this Program I have not just use the math library to calculate the sin of angle but instead i have written my own function for it in main.cpp and also writted the algorithm in algorithm.txt.</li>
+
+<li><p>
+<a href="https://github.com/nikhilrajpandey/motion">Motion</a>
+Suppose You want to find acceleration then you can write like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-python">        Motion.fromGiven<span style="color: #6699CC;">(</span><span style="color: #99C794;">'a'</span>,u=5,t=2,v=10<span style="color: #6699CC;">)</span>
+</pre>
+</div></li>
+
+<li><a href="https://github.com/nikhilrajpandey/RamanujamHardyNumberGenerator">RamanjumHardyNumber Generator</a>
+This is a simple c++ program to print 100 RamanujamHardyNumbers(TaxiCab) by computation.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org45242e1" class="outline-2">
+<h2 id="org45242e1"><span class="section-number-2">3</span> C/C++ Programs</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="https://github.com/NikhilRajPandey/ChristmasTree">Christmas Tree</a>
+I have made this program by seeing the reference of geeksforgeeks Christmas program But i have'nt just copied that.</li>
+
+<li><a href="https://github.com/nikhilrajpandey/linklist">Link List Implementation</a>
+This is my coding practice For implementing Linked List in C++.</li>
+
+<li><a href="https://github.com/nikhilrajpandey/algo_for_int_to_string">Integer to String</a>
+In this program I writed function to convert Integer to string from scratch.</li>
+
+<li><p>
+<a href="https://github.com/nikhilrajpandey/BoringStuff">Boring Stuff</a>
+In this project I programed some project when I was bored. <br />
+</p>
+
+<p>
+<b>Hangman</b>: Its a simple Hangman command line C++ Hangman game that i had read about it on wikipedia. (And also Game Wordlist is very small because my vocabulary is very bad) <br />
+</p>
+
+<p>
+<b>NoVowel</b>: In this project will find.How to find non-vowel words in a dictionary and the wordlist i downloaded from here.
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf31e793" class="outline-2">
+<h2 id="orgf31e793"><span class="section-number-2">4</span> Python Projects</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://github.com/NikhilRajPandey/minecraft-autoclicker">MineCraft AutoClicker</a>
+This is a simple autoclicker made for minecraft using pynput,python3. Its repetitively click right click (Mouse) when Middle Mouse Button is hold and repetitively click left click (Mouse) when R key is Pressed.</li>
+
+<li><a href="https://github.com/NikhilRajPandey/Blaster-Python-Game">Blaster Python Game</a>
+A simple game in which you have to escape from spaceship and kill (In Which Spaceships are rectangles for simplicity of project).</li>
+
+<li><a href="https://github.com/nikhilrajpandey/automatic-snake-game">Automatic Snake Game</a>
+In this project I tried to automate the snake game using simple set of rules.</li>
+</ul>
+<p>
+This project is maded when I don't have any kind of knowledge of datastructures and aglorithm so don't judge this program.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/nikhilrajpandey/wordguesser">Word Guesser</a>
+This is the basically a program that will try to guess spelled word from a wrong spelled word.</li>
+</ul>
+<p>
+<b>Message: When I created that project I don't have any kind of knowledge of datastructure and algorithm so I just used any random non efficient algorithm that I don't know how it worked 🥲</b>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/NikhilRajPandey/krun">Krun</a>
+This is a simple python script to run many programming</li>
+</ul>
+<p>
+Language code from one command.
+Exp: 'krun main.py' will run 'python main.py' and 'krun main.c' will run 'gcc main.c -o main'.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/nikhilrajpandey/lily">Lily</a>
+A Alexa and Google assistant like script.</li>
+</ul>
+<p>
+Its Not Much Fancy and I don't know Even if i ever completed this project or not.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/nikhilrajpandey/Table-learning">Table Learning</a>
+This program will force you to learn table from 12 to 19 that actually need in mathematics calculation.</li>
+
+<li><a href="https://github.com/nikhilrajpandey/share-it-clone">Share It Clone</a>
+This is a simple flask web app to transfer files between multiple computer and phones.</li>
+
+<li><a href="https://github.com/nikhilrajpandey/wishingwebsite">Wishing Website</a>
+This is a simple flask website to wish someone Happy New Year.</li>
+
+<li><a href="https://github.com/NikhilRajPandey/snake-game">Snake Game</a>
+This is a simple snake game maded using python and pygame using the <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9ailUQcxEPZrWgDoL36BtPYb">playlist of Code With Harry</a></li>
+
+<li><a href="https://github.com/nikhilrajpandey/FolderFormatter">Folder Formatter</a>
+This is a simple python program to arrange your files of a folder</li>
+</ul>
+</div>
+
+<div id="outline-container-org1337cd7" class="outline-3">
+<h3 id="org1337cd7"><span class="section-number-3">4.1</span> Projects I made when I was a Beginner and learning from my Mentor <a href="https://youtube.com/codewithharry">Code With Harry</a></h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+<i>Playlist Link: <a href="https://www.youtube.com/watch?v=aqvDTCpNRek&amp;list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME">Python Tutorial For beginner</a></i>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/NikhilRajPandey/librarymangment/">Library Management</a>
+This code was also written When I was a beginner back in 2018 To learn Classes. But Due to Hacktoberfest this project got contributed via many people.</li>
+
+<li><a href="https://github.com/NikhilRajPandey/snake-water-gun">Snake Water Gun</a>
+This is a very quick and Easy Snake Water Gun game which is very much similar to stone paper scissor.</li>
+
+<li><a href="https://github.com/NikhilRajPandey/guessthenumber">Guess The Number</a>
+A game written in python3, which is a number guessing console game, where we have to guess a number which is randomly choosen by the computer system</li>
+
+<li><a href="https://github.com/NikhilRajPandey/healthyprogrammer/blob/master/README.md">Healthy Programmer</a>
+Simple Program to practice if and else back in 2018.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ad3f73" class="outline-2">
+<h2 id="org4ad3f73"><span class="section-number-2">5</span> Leet Code Questions I have solved</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<b>Message: I didn't Do this many questions to pass the interview of Big MNC[FANG] I just loved DataStructure and algorithm and wanted to improve my Logical Thinking. That's why I did</b>
+</p>
+<ol class="org-ol">
+<li>Add Two Numbers</li>
+<li>Median of Two Sorted Arrays</li>
+<li>Zigzag Conversion</li>
+<li>Container With Most Water</li>
+<li>Roman to Integer</li>
+<li>Longest Common Prefix</li>
+<li>3Sum</li>
+<li>Letter Combinations of a Phone Number</li>
+<li>Merge k Sorted Lists</li>
+<li>Swap Nodes in Pairs</li>
+<li>Reverse Nodes in k-Group</li>
+<li>Next Permutation</li>
+<li>Longest Valid Parentheses</li>
+<li>Search in Rotated Sorted Array</li>
+<li>Find First and Last Position of Element in Sorted Array</li>
+<li>First Missing Positive</li>
+<li>Trapping Rain Water</li>
+<li>Jump Game II</li>
+<li>Rotate Image</li>
+<li>Group Anagrams</li>
+<li>Maximum Subarray</li>
+<li>Merge Intervals</li>
+<li>Length of Last Word</li>
+<li>Permutation Sequence</li>
+<li>Valid Number</li>
+<li>Plus One</li>
+<li>Edit Distance</li>
+<li>Search a 2D Matrix</li>
+<li>Sort Colors</li>
+<li>Remove Duplicates from Sorted List II</li>
+<li>Largest Rectangle in Histogram</li>
+<li>Subsets II</li>
+<li>Decode Ways</li>
+<li>Validate Binary Search Tree</li>
+<li>Recover Binary Search Tree</li>
+<li>Find the Duplicate Number</li>
+<li>Self Crossing</li>
+<li>Find All Anagrams in a String</li>
+<li>Add Two Numbers II</li>
+<li>Number of Provinces</li>
+<li>Subtree of Another Tree</li>
+<li>Non-negative Integers without Consecutive Ones</li>
+<li>Decode Ways II</li>
+<li>Two Sum IV - Input is a BST</li>
+<li>Trim a Binary Search Tree</li>
+<li>Subarray Product Less Than K</li>
+</ol>
+
+<footer>
+    ©Copyright
+</footer>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nikhil Raj Pandey</p>
+<p class="date">Created: 2022-06-21 Tue 19:43</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
