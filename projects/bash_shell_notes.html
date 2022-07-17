@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-07-17 Sun 22:26 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nikhil Raj Pandey Notes of bash shell</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nikhil Raj Pandey" />
+<meta name="description" content="My personal notes for bash shell in which I have written everything that I will forget about bash"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="https://nikhilrajpandey.github.io/static/css/style.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Nikhil Raj Pandey Notes of bash shell</h1>
+<navbar>
+    <a href="/">Home</a>
+    <a href="#">Contact</a>
+    <a href="#">About</a>
+	<a href="/projects">Projects</a>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+</navbar>
+<style>
+    #content, navbar ,#postamble{
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .figure img{
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    pre{
+        box-shadow: none;
+    }
+
+    navbar{
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .title{
+      display: none;
+    }
+</style>
+
+<div id="outline-container-org7382841" class="outline-2">
+<h2 id="org7382841">Variables, Operation, Printing</h2>
+<div class="outline-text-2" id="text-org7382841">
+<p>
+Remember That variable "a = 10" will cause error due to
+It should be written like "a=10"
+</p>
+</div>
+
+<div id="outline-container-orgfc73c72" class="outline-3">
+<h3 id="orgfc73c72">Constant Declaration</h3>
+<div class="outline-text-3" id="text-orgfc73c72">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">declare</span> -r <span style="color: #D8DEE9;">NUM1</span>=5
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">NUM1</span>
+</pre>
+</div>
+
+<pre class="example">
+5
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdaedfd6" class="outline-3">
+<h3 id="orgdaedfd6">Operation</h3>
+<div class="outline-text-3" id="text-orgdaedfd6">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">declare</span> -r <span style="color: #D8DEE9;">NUM1</span>=5
+<span style="color: #D8DEE9;">num2</span>=4
+<span style="color: #D8DEE9;">num3</span>=$<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>NUM1 + num2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #D8DEE9;">num3</span>=$<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>NUM1+num2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #D8DEE9;">num4</span>=$<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>NUM1-num2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #D8DEE9;">num5</span>=$<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>NUM1*num2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #D8DEE9;">num6</span>=$<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>NUM1/num2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">num3</span> $<span style="color: #D8DEE9;">num4</span> $<span style="color: #D8DEE9;">num5</span> $<span style="color: #D8DEE9;">num6</span>
+
+<span style="color: #81A1C1;">echo</span> $<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>5 **  2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>5 % 2<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">Modulas Operator</span>
+
+</pre>
+</div>
+
+<pre class="example">
+9 1 20 1
+25
+1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7a37547" class="outline-3">
+<h3 id="org7a37547">Incrementation of variable</h3>
+<div class="outline-text-3" id="text-org7a37547">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">i</span>=2
+<span style="color: #81A1C1;">let</span> <span style="color: #D8DEE9;">i</span>+=10
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"$i"</span>
+
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"++i = $((++i))"</span>
+
+</pre>
+</div>
+
+<pre class="example">
+12
+++i = 13
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6c3d85b" class="outline-3">
+<h3 id="org6c3d85b">Using Let if var i is not defined</h3>
+<div class="outline-text-3" id="text-org6c3d85b">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #6f7787;"># </span><span style="color: #6f7787;">let j+=10</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"$j"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"++j = $((++j))"</span>
+</pre>
+</div>
+
+<pre class="example">
+
+++j = 1
+</pre>
+
+
+<p>
+Answer is 1
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb0584f8" class="outline-3">
+<h3 id="orgb0584f8">Using python for calculating float sum</h3>
+<div class="outline-text-3" id="text-orgb0584f8">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">float1</span>=1.1
+<span style="color: #D8DEE9;">float2</span>=3.2
+<span style="color: #D8DEE9;">float_sum</span>=$<span style="color: #81A1C1;">(</span><span style="color: #81A1C1; font-weight: bold;">python3</span> -c <span style="color: #A3BE8C;">"print($float1+$float2)"</span><span style="color: #81A1C1;">)</span>
+
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"$float_sum"</span>
+
+</pre>
+</div>
+
+<pre class="example">
+4.300000000000001
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0619826" class="outline-3">
+<h3 id="org0619826">Multiple lines printing</h3>
+<div class="outline-text-3" id="text-org0619826">
+<div class="org-src-container">
+<pre class="src src-shell">cat &lt;&lt;EOF
+<span style="color: #A3BE8C;">Will Emacs Generated</span>
+<span style="color: #A3BE8C;">Autosnippet will print</span>
+<span style="color: #A3BE8C;">new line as using END</span>
+<span style="color: #A3BE8C;">Yup! It did</span>
+<span style="color: #A3BE8C;">EOF</span>
+</pre>
+</div>
+
+<pre class="example">
+Will Emacs Generated
+Autosnippet will print
+new line as using END
+Yup! It did
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ebe497" class="outline-2">
+<h2 id="org9ebe497">Functions</h2>
+<div class="outline-text-2" id="text-org9ebe497">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #88C0D0;">get_sum</span><span style="color: #81A1C1;">(){</span>
+    <span style="color: #81A1C1;">local</span> <span style="color: #D8DEE9;">num1</span>=$<span style="color: #D8DEE9;">1</span>
+    <span style="color: #81A1C1;">local</span> <span style="color: #D8DEE9;">num2</span>=$<span style="color: #D8DEE9;">2</span>
+    <span style="color: #81A1C1;">local</span> <span style="color: #D8DEE9;">nums_sum</span>=$<span style="color: #B48EAD;">(</span><span style="color: #A3BE8C;">(</span>num1+num2<span style="color: #A3BE8C;">)</span><span style="color: #B48EAD;">)</span>
+
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">nums_sum</span>
+<span style="color: #81A1C1;">}</span>
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">get_sum 10 100</span>
+<span style="color: #D8DEE9;">sum_in_var</span>=$<span style="color: #81A1C1;">(</span><span style="color: #81A1C1; font-weight: bold;">get_sum</span> 10 12<span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">sum_in_var</span>
+
+</pre>
+</div>
+
+<pre class="example">
+22
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgcbd5656" class="outline-2">
+<h2 id="orgcbd5656">Reading Inputs and If/Else</h2>
+<div class="outline-text-2" id="text-orgcbd5656">
+</div>
+<div id="outline-container-org72dc91f" class="outline-3">
+<h3 id="org72dc91f">If/Else using square bracket</h3>
+<div class="outline-text-3" id="text-org72dc91f">
+<div class="org-src-container">
+<pre class="src src-shell">
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">read -p "What is your age?: " age</span>
+<span style="color: #D8DEE9;">age</span>=19
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">Spaces are important</span>
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">[$age -ge 16] will cause error</span>
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">age</span> -ge 16 <span style="color: #81A1C1;">]</span>
+<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"You can drive in america"</span>
+<span style="color: #81A1C1;">elif</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">age</span> -eq 15 <span style="color: #81A1C1;">]</span>
+<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"You can drive next year"</span>
+<span style="color: #81A1C1;">elif</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">age</span> -lt 0 <span style="color: #81A1C1;">]</span>
+<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"You Stupid"</span>   
+<span style="color: #81A1C1;">else</span>    
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"You can't drive"</span>
+<span style="color: #81A1C1;">fi</span>
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">age</span> -ne 20 <span style="color: #81A1C1;">]</span>
+<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"You are not 20"</span>
+<span style="color: #81A1C1;">fi</span>
+    
+</pre>
+</div>
+
+<pre class="example">
+You can drive in america
+You are not 20
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3bcd9dd" class="outline-3">
+<h3 id="org3bcd9dd">If/else using paqrenthesis</h3>
+<div class="outline-text-3" id="text-org3bcd9dd">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">num</span>=20
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>num == 10 <span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>;<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Your number is 10"</span>
+<span style="color: #81A1C1;">fi</span>
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>num &gt; 10<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>;<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"It is greater than 10"</span>
+<span style="color: #81A1C1;">else</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Num is not greater than 10"</span>
+<span style="color: #81A1C1;">fi</span>
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> <span style="color: #A3BE8C;">(</span><span style="color: #5D80AE;">(</span>num % 2<span style="color: #5D80AE;">)</span><span style="color: #A3BE8C;">)</span> == 0<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>;<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Your num is even"</span>
+<span style="color: #81A1C1;">else</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Your num is odd"</span>
+<span style="color: #81A1C1;">fi</span>
+
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> <span style="color: #A3BE8C;">(</span><span style="color: #5D80AE;">(</span>num &gt; 0 <span style="color: #5D80AE;">)</span><span style="color: #A3BE8C;">)</span> &amp;&amp; <span style="color: #A3BE8C;">(</span><span style="color: #5D80AE;">(</span>num &lt; 11<span style="color: #5D80AE;">)</span><span style="color: #A3BE8C;">)</span> <span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Num is in range of (0,11) #SetSymbol :) "</span>
+<span style="color: #81A1C1;">else</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Num is not in range of (0,11)"</span>
+<span style="color: #81A1C1;">fi</span>
+
+</pre>
+</div>
+
+<pre class="example">
+It is greater than 10
+Your num is even
+Num is not in range of (0,11)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5479139" class="outline-3">
+<h3 id="org5479139">Ternery Operator</h3>
+<div class="outline-text-3" id="text-org5479139">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">age</span>=19
+<span style="color: #D8DEE9;">can_vote</span>=0
+<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> age &gt;= 18? <span style="color: #A3BE8C;">(</span><span style="color: #D8DEE9;">can_vote</span>=1<span style="color: #A3BE8C;">)</span> : <span style="color: #A3BE8C;">(</span><span style="color: #D8DEE9;">can_vote</span>=0<span style="color: #A3BE8C;">)</span><span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">can_vote</span>
+</pre>
+</div>
+
+<pre class="example">
+1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgebc979c" class="outline-2">
+<h2 id="orgebc979c">Operator like || and &amp;&amp;</h2>
+<div class="outline-text-2" id="text-orgebc979c">
+</div>
+<div id="outline-container-org2c38633" class="outline-3">
+<h3 id="org2c38633">Creating a directory if not exist</h3>
+<div class="outline-text-3" id="text-org2c38633">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">[</span> -d samp_dir <span style="color: #81A1C1;">]</span> || mkdir samp_dir
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d1a2a9" class="outline-3">
+<h3 id="org6d1a2a9">Running a command if first command executed succesfully</h3>
+<div class="outline-text-3" id="text-org6d1a2a9">
+<div class="org-src-container">
+<pre class="src src-shell">touch samp_file &amp;&amp; cat samp_file
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27b85a7" class="outline-2">
+<h2 id="org27b85a7">Strings</h2>
+<div class="outline-text-2" id="text-org27b85a7">
+</div>
+<div id="outline-container-orge333338" class="outline-3">
+<h3 id="orge333338">Existence of strings</h3>
+<div class="outline-text-3" id="text-orge333338">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">str1</span>=<span style="color: #A3BE8C;">""</span>
+<span style="color: #D8DEE9;">str2</span>=<span style="color: #A3BE8C;">"Sad"</span>
+<span style="color: #D8DEE9;">str3</span>=<span style="color: #A3BE8C;">"Happy"</span>
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">str2</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"This will output on screen"</span>
+<span style="color: #81A1C1;">fi</span>
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">str1</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"This will not output on screen"</span>
+<span style="color: #81A1C1;">fi</span>
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">variable_dont_exist</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"This also not output on screen"</span>
+<span style="color: #81A1C1;">fi</span>
+</pre>
+</div>
+
+<pre class="example">
+This will output on screen
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0ea2044" class="outline-3">
+<h3 id="org0ea2044">Existence of string good way</h3>
+<div class="outline-text-3" id="text-org0ea2044">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">str1</span>=<span style="color: #A3BE8C;">""</span>
+<span style="color: #D8DEE9;">str2</span>=<span style="color: #A3BE8C;">"Sad"</span>
+<span style="color: #D8DEE9;">str3</span>=<span style="color: #A3BE8C;">"Happy"</span>
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">-z means is empty string use -n for non empty</span>
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> -z $<span style="color: #D8DEE9;">str1</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Str1 have no value"</span>
+<span style="color: #81A1C1;">fi</span>
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> -z $<span style="color: #D8DEE9;">str10</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Str10 This will output on screen"</span>
+<span style="color: #81A1C1;">fi</span>
+
+</pre>
+</div>
+
+<pre class="example">
+Str1 have no value
+Str10 This will output on screen
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org75f1caa" class="outline-3">
+<h3 id="org75f1caa">Comparision of two strings</h3>
+<div class="outline-text-3" id="text-org75f1caa">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">str2</span>=<span style="color: #A3BE8C;">"sad"</span>
+<span style="color: #D8DEE9;">str3</span>=<span style="color: #A3BE8C;">"bad"</span>
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span><span style="color: #B48EAD;">[</span> $<span style="color: #D8DEE9;">str2</span> == $<span style="color: #D8DEE9;">str3</span> <span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Str2 equals to str3"</span>
+<span style="color: #81A1C1;">elif</span> <span style="color: #81A1C1;">[</span><span style="color: #B48EAD;">[</span> $<span style="color: #D8DEE9;">str2</span> != $<span style="color: #D8DEE9;">str3</span> <span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Str2 not equals to str3"</span>
+<span style="color: #81A1C1;">fi</span>
+
+</pre>
+</div>
+
+<pre class="example">
+Str2 not equals to str3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgda4ea70" class="outline-2">
+<h2 id="orgda4ea70">Files/Folder</h2>
+<div class="outline-text-2" id="text-orgda4ea70">
+</div>
+<div id="outline-container-org0aed3e9" class="outline-3">
+<h3 id="org0aed3e9">Checking if a directory exist or not</h3>
+<div class="outline-text-3" id="text-org0aed3e9">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">folder1</span>=folder1
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> <span style="color: #81A1C1; font-weight: bold;">!</span> -d $<span style="color: #D8DEE9;">folder1</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"$folder1 not exist"</span>
+<span style="color: #81A1C1;">fi</span>
+</pre>
+</div>
+
+<pre class="example">
+folder1 not exist
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4b2fbaf" class="outline-3">
+<h3 id="org4b2fbaf">Checking If a file exist or not</h3>
+<div class="outline-text-3" id="text-org4b2fbaf">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">file</span>=foo
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> -f $<span style="color: #D8DEE9;">file</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"$file exists"</span>
+<span style="color: #81A1C1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org031517e" class="outline-3">
+<h3 id="org031517e">Checking if a path exist or not</h3>
+<div class="outline-text-3" id="text-org031517e">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">path</span>=our_path
+
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span> -e $<span style="color: #D8DEE9;">path</span> <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Yeah It exists"</span>
+<span style="color: #81A1C1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org470aabe" class="outline-2">
+<h2 id="org470aabe">Regular Expression</h2>
+<div class="outline-text-2" id="text-org470aabe">
+</div>
+<div id="outline-container-org838fef0" class="outline-3">
+<h3 id="org838fef0">Date Matching</h3>
+<div class="outline-text-3" id="text-org838fef0">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">date</span>=<span style="color: #A3BE8C;">"20-jun"</span>
+<span style="color: #D8DEE9;">dates</span>=<span style="color: #A3BE8C;">'(jan|feb|march|april|may|jun|july|aug|sept|oct|nov|dec)'</span>
+<span style="color: #D8DEE9;">pat</span>=<span style="color: #A3BE8C;">"^[0-9]{,2}-$dates$"</span>
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">echo "$pat"</span>
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">Tilda sign is important for regular expression</span>
+<span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">[</span><span style="color: #B48EAD;">[</span> $<span style="color: #D8DEE9;">date</span> =~ $<span style="color: #D8DEE9;">pat</span> <span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">]</span>;<span style="color: #81A1C1;">then</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Date is valid"</span>
+<span style="color: #81A1C1;">else</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Not valid"</span>
+<span style="color: #81A1C1;">fi</span>
+</pre>
+</div>
+
+<pre class="example">
+Date is valid
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd7abdfa" class="outline-2">
+<h2 id="orgd7abdfa">Switch Case</h2>
+<div class="outline-text-2" id="text-orgd7abdfa">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">age</span>=10
+
+<span style="color: #81A1C1;">case</span> $<span style="color: #D8DEE9;">age</span><span style="color: #81A1C1;"> in</span>
+    <span style="color: #81A1C1;">[</span>0-4<span style="color: #81A1C1;">]</span>)
+        <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"To young for school"</span>
+        ;;
+    5)
+        <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Go to kindergarden"</span>
+        ;;
+    <span style="color: #81A1C1;">[</span>6-9<span style="color: #81A1C1;">]</span>|1<span style="color: #81A1C1;">[</span>0-8<span style="color: #81A1C1;">]</span>)
+        <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"You can go to school"</span>
+        ;;
+    1<span style="color: #81A1C1;">[</span>9<span style="color: #81A1C1;">]</span>|2<span style="color: #81A1C1;">[</span>0-5<span style="color: #81A1C1;">]</span>)
+        <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Go to university"</span>
+        ;;
+    string)
+        <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"string"</span>
+        ;;
+    
+    *)
+        <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Default Value"</span>
+        ;;
+<span style="color: #81A1C1;">esac</span>
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">Don't know how to put less than sign or greater than sign in switch case</span>
+
+</pre>
+</div>
+
+<pre class="example">
+You can go to school
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb7d4c9e" class="outline-2">
+<h2 id="orgb7d4c9e">Paramneter Expansion</h2>
+<div class="outline-text-2" id="text-orgb7d4c9e">
+</div>
+<div id="outline-container-orgf4af183" class="outline-3">
+<h3 id="orgf4af183">Replacing something</h3>
+<div class="outline-text-3" id="text-orgf4af183">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #6f7787;"># </span><span style="color: #6f7787;">Parameter Expansion</span>
+<span style="color: #D8DEE9;">name</span>=<span style="color: #A3BE8C;">"Nikhil"</span>
+<span style="color: #D8DEE9;">samp_string</span>=<span style="color: #A3BE8C;">"The dog/ climbed the tree with the help \</span>
+<span style="color: #A3BE8C;">of another dog/."</span>
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">24 June 2022</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"${name}'s Hair will be awesome"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"${samp_string//dog\//cat}"</span>
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">It will replace all dog/ with cat</span>
+
+</pre>
+</div>
+
+<pre class="example">
+Nikhil's Hair will be awesome
+The cat climbed the tree with the help of another cat.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb7f51d4" class="outline-3">
+<h3 id="orgb7f51d4">Declaring Var if not exist</h3>
+<div class="outline-text-3" id="text-orgb7f51d4">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Value of var not exist: ${faltu_var:=nik}"</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">faltu_var</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">This will print</span>
+
+<span style="color: #D8DEE9;">existed_var</span>=<span style="color: #A3BE8C;">"The"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Value of var exist: ${existed_var:=nik}"</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">This will alter the existed var</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">existed_var</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">This will also print</span>
+
+<span style="color: #D8DEE9;">foo</span>=<span style="color: #A3BE8C;">"fo"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"I am ${foo-=nikhil}"</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">This will not alter the existed var</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">foo</span>
+
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"I am ${foo2-=nikhil}"</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">This will not create var</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">foo2</span>
+
+</pre>
+</div>
+
+<pre class="example">
+Value of var not exist: nik
+nik
+Value of var exist: The
+The
+I am fo
+fo
+I am =nikhil
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf4b3ecf" class="outline-3">
+<h3 id="orgf4b3ecf">Strings Functions</h3>
+<div class="outline-text-3" id="text-orgf4b3ecf">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">rand_str</span>=<span style="color: #A3BE8C;">"A random string"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"String Length: ${#rand_str}"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Slicing: ${rand_str:3}"</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Slicing: ${rand_str:3:7}"</span>
+
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">printing after "random"</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #81A1C1;">{</span><span style="color: #D8DEE9;">rand_str</span>#*random<span style="color: #81A1C1;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+String Length: 15
+Slicing: andom string
+Slicing: andom s
+string
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc52e8f4" class="outline-2">
+<h2 id="orgc52e8f4">Loops</h2>
+<div class="outline-text-2" id="text-orgc52e8f4">
+</div>
+<div id="outline-container-orgcc78c21" class="outline-3">
+<h3 id="orgcc78c21">While Loop-1</h3>
+<div class="outline-text-3" id="text-orgcc78c21">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">num</span>=1
+
+<span style="color: #81A1C1;">while</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">num</span> -le 10 <span style="color: #81A1C1;">]</span>;<span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"A: "</span> $<span style="color: #D8DEE9;">num</span>
+    <span style="color: #6f7787;"># </span><span style="color: #6f7787;">num=$((num + 1))</span>
+    <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>num++<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+A:  1
+A:  2
+A:  3
+A:  4
+A:  5
+A:  6
+A:  7
+A:  8
+A:  9
+A:  10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org97838f3" class="outline-3">
+<h3 id="org97838f3">While Loop-2</h3>
+<div class="outline-text-3" id="text-org97838f3">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">num</span>=0
+
+<span style="color: #81A1C1;">while</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">num</span> -le 20 <span style="color: #81A1C1;">]</span>; <span style="color: #81A1C1;">do</span>
+    <span style="color: #D8DEE9;">num</span>=$<span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> num + 1 <span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+    <span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> <span style="color: #A3BE8C;">(</span><span style="color: #5D80AE;">(</span> num % 2<span style="color: #5D80AE;">)</span><span style="color: #A3BE8C;">)</span> == 1<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>; <span style="color: #81A1C1;">then</span>
+        <span style="color: #81A1C1;">continue</span>
+    <span style="color: #81A1C1;">fi</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">num</span>
+
+    <span style="color: #81A1C1;">if</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> num &gt;= 15<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+    <span style="color: #81A1C1;">then</span>
+        <span style="color: #81A1C1;">break</span>
+    <span style="color: #81A1C1;">fi</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+2
+4
+6
+8
+10
+12
+14
+16
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgefdf699" class="outline-3">
+<h3 id="orgefdf699">Until Loops</h3>
+<div class="outline-text-3" id="text-orgefdf699">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">num</span>=1
+<span style="color: #81A1C1;">until</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">num</span> -gt 10 <span style="color: #81A1C1;">]</span>
+<span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">num</span>
+    <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>num++<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+    <span style="color: #6f7787;"># </span><span style="color: #6f7787;">num=$((num+1))</span>
+    <span style="color: #6f7787;"># </span><span style="color: #6f7787;">let num+=1</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2b7ae7e" class="outline-3">
+<h3 id="org2b7ae7e">For Loops</h3>
+<div class="outline-text-3" id="text-org2b7ae7e">
+</div>
+<div id="outline-container-org38d3b66" class="outline-4">
+<h4 id="org38d3b66">C Style</h4>
+<div class="outline-text-4" id="text-org38d3b66">
+<p>
+Here instead of "i++" i+=1 also work
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">for</span> <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span> <span style="color: #D8DEE9;">i</span>=0; i &lt;= 10; i++<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>; <span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">i</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb1ffda6" class="outline-4">
+<h4 id="orgb1ffda6">Normal</h4>
+<div class="outline-text-4" id="text-orgb1ffda6">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">for</span> i<span style="color: #81A1C1;"> in</span> 1 2 3 4 5
+<span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">i</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+1
+2
+3
+4
+5
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc962ef2" class="outline-4">
+<h4 id="orgc962ef2">Sequence</h4>
+<div class="outline-text-4" id="text-orgc962ef2">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">for</span> i<span style="color: #81A1C1;"> in</span> <span style="color: #81A1C1;">{</span>0..10..2<span style="color: #81A1C1;">}</span>
+<span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"Ith time is -&gt; $i"</span>
+<span style="color: #81A1C1;">done</span>     
+</pre>
+</div>
+
+<pre class="example">
+Ith time is -&gt; 0
+Ith time is -&gt; 2
+Ith time is -&gt; 4
+Ith time is -&gt; 6
+Ith time is -&gt; 8
+Ith time is -&gt; 10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgeae1d20" class="outline-4">
+<h4 id="orgeae1d20">Alphabetical Sequence</h4>
+<div class="outline-text-4" id="text-orgeae1d20">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">for</span> i<span style="color: #81A1C1;"> in</span> <span style="color: #81A1C1;">{</span>A..Z<span style="color: #81A1C1;">}</span>; <span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">i</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdbed543" class="outline-2">
+<h2 id="orgdbed543">Arrays</h2>
+<div class="outline-text-2" id="text-orgdbed543">
+</div>
+<div id="outline-container-org441fe8a" class="outline-3">
+<h3 id="org441fe8a">Basic Operation</h3>
+<div class="outline-text-3" id="text-org441fe8a">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">fav_nums</span>=<span style="color: #81A1C1;">(</span>3.14 2.718 .57221 4.6692<span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"PI: ${fav_nums[0]}"</span> <span style="color: #6f7787;"># </span><span style="color: #6f7787;">{ These thing is important</span>
+
+<span style="color: #D8DEE9;">fav_nums</span><span style="color: #81A1C1;">[</span>4<span style="color: #81A1C1;">]</span>=9910
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"NUM: ${fav_nums[4]}"</span>
+
+<span style="color: #D8DEE9;">fav_nums</span>+=<span style="color: #81A1C1;">(</span>1 10<span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"When no array is given in print: ${fav_nums}"</span>
+
+<span style="color: #81A1C1;">echo</span> $<span style="color: #81A1C1;">{</span><span style="color: #D8DEE9;">fav_nums</span><span style="color: #B48EAD;">[</span>@<span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+PI: 3.14
+NUM: 9910
+When no array is given in print: 3.14
+3.14 2.718 .57221 4.6692 9910 1 10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7692238" class="outline-3">
+<h3 id="org7692238">For Loop of values</h3>
+<div class="outline-text-3" id="text-org7692238">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">fav_nums</span>=<span style="color: #81A1C1;">(</span>3.14 2.718 .57221 4.6692<span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">echo</span> $<span style="color: #81A1C1;">{</span><span style="color: #D8DEE9;">fav_nums</span><span style="color: #B48EAD;">[</span>*<span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">}</span>
+
+<span style="color: #81A1C1;">for</span> i<span style="color: #81A1C1;"> in</span> $<span style="color: #81A1C1;">{</span><span style="color: #D8DEE9;">fav_nums</span><span style="color: #B48EAD;">[</span>*<span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">}</span>; <span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">i</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+3.14 2.718 .57221 4.6692
+3.14
+2.718
+.57221
+4.6692
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0147c42" class="outline-3">
+<h3 id="org0147c42">Loop of indexs</h3>
+<div class="outline-text-3" id="text-org0147c42">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">arr</span>=<span style="color: #81A1C1;">(</span>1 2 3 400<span style="color: #81A1C1;">)</span>
+<span style="color: #D8DEE9;">i</span>=0
+
+<span style="color: #81A1C1;">while</span> <span style="color: #81A1C1;">[</span> $<span style="color: #D8DEE9;">i</span> -le $<span style="color: #B48EAD;">{</span>#<span style="color: #D8DEE9;">arr</span><span style="color: #A3BE8C;">[</span>@<span style="color: #A3BE8C;">]</span><span style="color: #B48EAD;">}</span> <span style="color: #81A1C1;">]</span>
+<span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> <span style="color: #A3BE8C;">"T:"</span> $<span style="color: #D8DEE9;">i</span>
+    <span style="color: #81A1C1;">(</span><span style="color: #B48EAD;">(</span>i++<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+<span style="color: #81A1C1;">done</span>
+</pre>
+</div>
+
+<pre class="example">
+T: 0
+T: 1
+T: 2
+T: 3
+T: 4
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org759cd26" class="outline-3">
+<h3 id="org759cd26">Sorting a Array</h3>
+<div class="outline-text-3" id="text-org759cd26">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">nums</span>=<span style="color: #81A1C1;">(</span>1 0 10 100 2<span style="color: #81A1C1;">)</span>
+
+<span style="color: #D8DEE9;">sorted_nums</span>=<span style="color: #81A1C1;">(</span>$<span style="color: #B48EAD;">(</span><span style="color: #81A1C1; font-weight: bold;">for</span><span style="color: #A3BE8C;">(</span><span style="color: #5D80AE;">(</span> <span style="color: #D8DEE9;">i</span>=0; i&lt;$<span style="color: #8FBCBB;">{</span>#<span style="color: #D8DEE9;">nums</span><span style="color: #81A1C1;">[</span>@<span style="color: #81A1C1;">]</span><span style="color: #8FBCBB;">}</span>; i++<span style="color: #5D80AE;">)</span><span style="color: #A3BE8C;">)</span>;<span style="color: #81A1C1;">do</span>
+   <span style="color: #81A1C1;">echo</span> $<span style="color: #A3BE8C;">{</span><span style="color: #D8DEE9;">nums</span><span style="color: #5D80AE;">[</span>i<span style="color: #5D80AE;">]</span><span style="color: #A3BE8C;">}</span>
+<span style="color: #81A1C1;">done</span> | sort -n<span style="color: #B48EAD;">)</span><span style="color: #81A1C1;">)</span>
+
+<span style="color: #81A1C1;">echo</span> $<span style="color: #81A1C1;">{</span><span style="color: #D8DEE9;">sorted_nums</span><span style="color: #B48EAD;">[</span>4<span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+100
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb3e0d19" class="outline-3">
+<h3 id="orgb3e0d19">Printing Array Function</h3>
+<div class="outline-text-3" id="text-orgb3e0d19">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #D8DEE9;">b</span>=<span style="color: #81A1C1;">(</span>100 230 23 200<span style="color: #81A1C1;">)</span>
+<span style="color: #6f7787;"># </span><span style="color: #6f7787;">echo ${#a[@]};</span>
+<span style="color: #88C0D0;">print_array</span><span style="color: #81A1C1;">(){</span>
+    <span style="color: #81A1C1;">for</span> i
+    <span style="color: #81A1C1;">do</span>
+        <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">i</span>
+    <span style="color: #81A1C1;">done</span>
+<span style="color: #81A1C1;">}</span>
+print_array $<span style="color: #81A1C1;">{</span><span style="color: #D8DEE9;">b</span><span style="color: #B48EAD;">[</span>@<span style="color: #B48EAD;">]</span><span style="color: #81A1C1;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+100
+230
+23
+200
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5763d46" class="outline-2">
+<h2 id="org5763d46">Accesing File</h2>
+<div class="outline-text-2" id="text-org5763d46">
+</div>
+<div id="outline-container-org666c753" class="outline-3">
+<h3 id="org666c753">While Loops</h3>
+<div class="outline-text-3" id="text-org666c753">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">while </span><span style="color: #81A1C1;">read</span> col1 col2 col3; <span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">printf</span> <span style="color: #A3BE8C;">"${col1} ${col2} ${col3} $((col1+col2+col3))\n"</span>
+<span style="color: #81A1C1;">done</span> &lt; read_data.txt
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">100</td>
+<td class="org-right">200</td>
+<td class="org-right">300</td>
+<td class="org-right">600</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-right">100</td>
+<td class="org-right">9</td>
+<td class="org-right">129</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">300</td>
+<td class="org-right">20</td>
+<td class="org-right">320</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga8ff1da" class="outline-3">
+<h3 id="orga8ff1da">Using While Loops but not columns</h3>
+<div class="outline-text-3" id="text-orga8ff1da">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #81A1C1;">while </span><span style="color: #81A1C1;">read</span> line1 line2; <span style="color: #81A1C1;">do</span>
+    <span style="color: #81A1C1;">echo</span> $<span style="color: #D8DEE9;">line2</span>;
+<span style="color: #81A1C1;">done</span> &lt; read_data.txt
+</pre>
+</div>
+
+<pre class="example">
+200 300
+100 9
+300 20
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org39f4742" class="outline-2">
+<h2 id="org39f4742">Extra CSS</h2>
+<div class="outline-text-2" id="text-org39f4742">
+
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nikhil Raj Pandey</p>
+<p class="date">Created: 2022-07-17 Sun 22:26</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
