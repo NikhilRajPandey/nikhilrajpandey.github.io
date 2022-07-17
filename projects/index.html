@@ -247,11 +247,11 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">My Small Projects Showcase</h1>
 <navbar>
-    <a href="/">Home</a>
-    <a href="/notes">Notes</a>
-    <a href="#">About</a>
-	<a href="/projects">Projects</a>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+  <a href="/">Home</a>
+  <a href="/notes">Notes</a>
+  <a href="#">About</a>
+  <a href="/projects">Projects</a>
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 </navbar>
 <style>
   * {
@@ -282,9 +282,29 @@ for the JavaScript code in this tag.
     display: flex;
     justify-content: space-around;
   }
+  
   .title{
     display: none;
   }
+
+  @media screen and (max-width: 1920px){
+	.figure img{
+	  width: 60vw;
+	}
+  }
+  
+  @media screen and (max-width: 800px){
+	.figure img{
+	  width: 80vw;
+	}
+  }
+  @media screen and (max-width: 500px){
+	.figure img{
+	  width: 100%;
+	}
+  }
+  
+
 </style>
 
 <div id="outline-container-org91e088c" class="outline-2">

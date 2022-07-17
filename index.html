@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Nikhil Raj Pandey</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <head>
+	<title>Nikhil Raj Pandey</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 
-<body>
-<navbar>
-    <a href="/">Home</a>
-    <a href="/notes">Notes</a>
-    <a href="#">About</a>
-	<a href="/projects">Projects</a>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+  <body>
+	<navbar>
+  <a href="/">Home</a>
+  <a href="/notes">Notes</a>
+  <a href="#">About</a>
+  <a href="/projects">Projects</a>
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 </navbar>
 <style>
   * {
@@ -43,31 +43,51 @@
     display: flex;
     justify-content: space-around;
   }
+  
   .title{
     display: none;
   }
+
+  @media screen and (max-width: 1920px){
+	.figure img{
+	  width: 60vw;
+	}
+  }
+  
+  @media screen and (max-width: 800px){
+	.figure img{
+	  width: 80vw;
+	}
+  }
+  @media screen and (max-width: 500px){
+	.figure img{
+	  width: 100%;
+	}
+  }
+  
+
 </style>
-<div id="content">
-<h1>Hi! I Am Nikhil Raj Pandey</h1>
-<p>This is my personal website where I will try to blog / showcase my projects. Currently It will be nothing fancy. </p>
-<hr>
-<div class="figure">
-  <img src="static/images/lemonade_mouth.jpeg" style="width:50vw;">
-</div>
-<h1>About Me</h1>
-<ul>
-  <li>I am 16 Year old teenager born at 3 November 2005.</li>
-  <li>By The Teenager word You can understand that I am still learning 😅</li>
-  <li>The Poster that you are above seeing is of my favourite movie Lemonade Mouth.</li>
-  <li>I used to work on Python, C++ and Little Javascript But I don't Know Why Github api showing 95%.</li>
-  <li>Fun fact: My English and Designing is so Bad and You can find grammar and spelling mistakes in my repository 😅</li>
-  <li>🥅 Future goals: Contribute more to Open Source projects.</li>
-  <li>Contact Me at <code>nikhilrajpandey1@gmail.com </code></li>
-</ul>
-<footer>
+	<div id="content">
+	  <h1>Hi! I Am Nikhil Raj Pandey</h1>
+	  <p>This is my personal website where I will try to blog / showcase my projects. Currently It will be nothing fancy. </p>
+	  <hr>
+	  <div class="figure">
+		<img src="static/images/lemonade_mouth.jpeg">
+	  </div>
+	  <h1>About Me</h1>
+	  <ul>
+		<li>I am 16 Year old teenager born at 3 November 2005.</li>
+		<li>By The Teenager word You can understand that I am still learning 😅</li>
+		<li>The Poster that you are above seeing is of my favourite movie Lemonade Mouth.</li>
+		<li>I used to work on Python, C++ and Little Javascript But I don't Know Why Github api showing 95%.</li>
+		<li>Fun fact: My English and Designing is so Bad and You can find grammar and spelling mistakes in my repository 😅</li>
+		<li>🥅 Future goals: Contribute more to Open Source projects.</li>
+		<li>Contact Me at <code>nikhilrajpandey1@gmail.com </code></li>
+	  </ul>
+	  <footer>
   <a href="https://github.com/nikhilrajpandey">Github</a> <br>
   ©Copyright
 </footer>
-</div>
-</body>
+	</div>
+  </body>
 </html>

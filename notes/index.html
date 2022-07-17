@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nikhil Raj Pandey</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <head>
+	<title>Nikhil Raj Pandey</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 
-<body>
-<navbar>
-    <a href="/">Home</a>
-    <a href="/notes">Notes</a>
-    <a href="#">About</a>
-	<a href="/projects">Projects</a>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+  <body>
+	<navbar>
+  <a href="/">Home</a>
+  <a href="/notes">Notes</a>
+  <a href="#">About</a>
+  <a href="/projects">Projects</a>
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 </navbar>
 <style>
   * {
@@ -42,21 +42,43 @@
     display: flex;
     justify-content: space-around;
   }
+  
   .title{
     display: none;
   }
+
+  @media screen and (max-width: 1920px){
+	.figure img{
+	  width: 60vw;
+	}
+  }
+  
+  @media screen and (max-width: 800px){
+	.figure img{
+	  width: 80vw;
+	}
+  }
+  @media screen and (max-width: 500px){
+	.figure img{
+	  width: 100%;
+	}
+  }
+  
+
 </style>
 
-<div id="content" style="text-align: center">
+	<div id="content" style="text-align: center">
 
-<div style="margin-top: 40px">
-<img src="/static/images/linus_windows_thought.jpg" style="width:60vw;">
-<p>
-<h2><i> My notes </i></h2>
-<a href="bash_notes.html"> Bash Notes </a><br>
-</p>
-</div>
+	  <div class="figure" style="margin-top: 40px">
+		<img src="/static/images/linus_windows_thought.jpg">
+		<p>
+		  <h2><i> My notes </i></h2>
+		  <ul>
+			<li><a href="bash_notes.html" > Bash Notes </a> </li><br>
+		  </ul>
+		</p>
+	  </div>
 
-</div>
-<body>
+	</div>
+  <body>
 </html>
