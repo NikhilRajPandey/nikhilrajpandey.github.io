@@ -31,7 +31,6 @@
   .figure img{
     display: block;
     margin: 0 auto;
-    width: 100%;
   }
 
   pre{
@@ -71,9 +70,10 @@
 	  <h1>Hi! I Am Nikhil Raj Pandey</h1>
 	  <p>This is my personal website where I will try to blog / showcase my projects. Currently It will be nothing fancy. </p>
 	  <hr>
-	  <div class="figure">
+	  <div class="figure" id="front_banner">
 		<img src="static/images/lemonade_mouth.jpeg">
 	  </div>
+	  <br>
 	  <h1>About Me</h1>
 	  <ul>
 		<li>I am 16 Year old teenager born at 3 November 2005.</li>
@@ -84,10 +84,17 @@
 		<li>🥅 Future goals: Contribute more to Open Source projects.</li>
 		<li>Contact Me at <code>nikhilrajpandey1@gmail.com </code></li>
 	  </ul>
-	  <footer>
+	  <footer style="margin-top: 40px;">
   <a href="https://github.com/nikhilrajpandey">Github</a> <br>
   ©Copyright
 </footer>
 	</div>
+	<style>
+		@media screen and (min-width: 900px){
+		  #front_banner img{
+			width: 40vw;
+		  }
+		}
+	</style>
   </body>
 </html>
