@@ -259,7 +259,6 @@ for the JavaScript code in this tag.
 	padding: 0;
   }
   #content, navbar ,#postamble{
-    width: 85%;
     margin: 0 auto;
   }
 
@@ -287,17 +286,26 @@ for the JavaScript code in this tag.
   }
 
   @media screen and (max-width: 1920px){
+	#content, navbar ,#postamble{
+      width: 70%;
+	}
 	.figure img{
-	  width: 60vw;
+	  width: 40vw;
 	}
   }
   
   @media screen and (max-width: 800px){
+	#content, navbar ,#postamble{
+      width: 80%;
+	}
 	.figure img{
-	  width: 80vw;
+	  width: 70vw;
 	}
   }
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 700px){
+	#content, navbar ,#postamble{
+      width: 90%;
+	}
 	.figure img{
 	  width: 100%;
 	}

@@ -2,10 +2,11 @@
 <html>
   <head>
 	<title>Nikhil Raj Pandey</title>
+	<meta name="description" content="This is place for Nikhil Raj Pandey notes.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <body>
+  <body class="background">
 	<navbar>
   <a href="/">Home</a>
   <a href="/notes">Notes</a>
@@ -19,7 +20,6 @@
 	padding: 0;
   }
   #content, navbar ,#postamble{
-    width: 85%;
     margin: 0 auto;
   }
 
@@ -47,17 +47,26 @@
   }
 
   @media screen and (max-width: 1920px){
+	#content, navbar ,#postamble{
+      width: 70%;
+	}
 	.figure img{
-	  width: 60vw;
+	  width: 40vw;
 	}
   }
   
   @media screen and (max-width: 800px){
+	#content, navbar ,#postamble{
+      width: 80%;
+	}
 	.figure img{
-	  width: 80vw;
+	  width: 70vw;
 	}
   }
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 700px){
+	#content, navbar ,#postamble{
+      width: 90%;
+	}
 	.figure img{
 	  width: 100%;
 	}
@@ -67,17 +76,21 @@
 </style>
 
 	<div id="content" style="text-align: center">
-
-	  <div class="figure" style="margin-top: 40px">
-		<img src="/static/images/linus_windows_thought.jpg">
-		<p>
-		  <h2><i> My notes </i></h2>
-		  <ul>
-			<li><a href="bash_notes.html" > Bash Notes </a> </li><br>
-		  </ul>
-		</p>
-	  </div>
-
+	  <ul class="table_of_content">
+		<a href="/notes/bash_notes.html"><li>Bash Notes</li></a>
+	  </ul>
+	  <p>
+		Photo by Riccardo Bertolo:
+		<a target="_blank" href="https://www.pexels.com/photo/blue-sea-under-blue-sky-4245826/">
+		  Link
+		</a>
+	  </p>
 	</div>
+	<style>
+	  .background{
+		background: linear-gradient(0deg,rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/static/images/notes_wallpaper.jpg');
+	  }
+	</style>
+	<link rel="stylesheet" type="text/css" href="/static/css/table_content.css"/>
   <body>
 </html>
