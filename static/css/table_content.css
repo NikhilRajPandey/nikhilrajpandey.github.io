@@ -3,7 +3,24 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.table_of_content{list-style:square;}
-.table_of_content li{
-  font-size: 40px;
+.table_of_content{
+  list-style:square;
 }
+.table_of_content li{
+  text-transform : capitalize;
+}
+
+@media screen and (max-width: 1920px){
+  .table_of_content li{
+	font-size: 40px;
+  }
+
+}
+
+@media screen and (max-width: 800px){
+  .table_of_content li{
+	font-size: 25px;
+  }
+
+}
+
