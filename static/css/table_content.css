@@ -12,14 +12,19 @@
 
 @media screen and (max-width: 1920px){
   .table_of_content li{
-	font-size: 40px;
+	font-size: 30px;
   }
 
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 900px){
   .table_of_content li{
 	font-size: 25px;
+  }
+}
+@media screen and (max-width: 600px){
+  .table_of_content li{
+	font-size: 20px;
   }
 
 }
