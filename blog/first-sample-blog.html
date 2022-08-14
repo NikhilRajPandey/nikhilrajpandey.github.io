@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<title>First Sample Blog</title>
+  	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+	<navbar>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+  <a href="/blog">Blogs</a>
+  <a href="#">Contact</a>
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+</navbar>
+<style>
+  * {
+	margin: 0;
+	padding: 0;
+  }
+  #content, navbar ,#postamble{
+    margin: 0 auto;
+  }
+
+  navbar{
+	margin-bottom: 30px;
+  }
+
+  .figure img{
+    display: block;
+    margin: 0 auto;
+  }
+
+  pre{
+    box-shadow: none;
+  }
+
+  navbar{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .title{
+    display: none;
+  }
+
+  @media screen and (max-width: 1920px){
+	#content, navbar ,#postamble{
+      width: 70%;
+	}
+	.figure img{
+	  width: 40vw;
+	}
+  }
+  
+  @media screen and (max-width: 800px){
+	#content, navbar ,#postamble{
+      width: 80%;
+	}
+	.figure img{
+	  width: 70vw;
+	}
+  }
+  @media screen and (max-width: 700px){
+	#content, navbar ,#postamble{
+      width: 90%;
+	}
+	.figure img{
+	  width: 100%;
+	}
+  }
+  
+
+</style>
+	<div id="content">
+	  <h1> First Sample Blog </h1>
+	  <hr>
+	  <p>
+		This is my sample blog that is written for just testing purpose that how well can i read
+		blog in <b>emacs.</b>Do you prefer gui editor like sublime or cli text editor like emacs.
+		Well try to look for both world and then decide.
+	  </p>
+	  <h2>Nice to say </h2>
+	  <p>
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+		Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when 
+		an unknown printer took a galley of type and scrambled it to make a type specimen book.
+		It has survived not only five centuries, but also the leap into electronic typesetting, 
+		remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets 
+		containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+		PageMaker including versions of Lorem Ipsum.
+	  </p>
+	  <footer style="margin-top: 40px;">
+  <a href="https://github.com/nikhilrajpandey">Github</a> <br>
+  ©Copyright
+</footer>
+	</div>
+  <body>
+</html>
